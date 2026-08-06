@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games Library | emharper14 design</title>
+  <meta name="description" content="Play browser games created by emharper14 design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: rgba(22, 30, 49, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-glow: #6366f1;
+      --accent-secondary: #ec4899;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.5rem;
+      background-image: 
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 40%);
+    }
+
+    header {
+      text-align: center;
+      max-width: 700px;
+      margin-bottom: 3.5rem;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    p.subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .game-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-glow), var(--accent-secondary));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.3);
+    }
+
+    .game-card:hover::before {
+      opacity: 1;
+    }
+
+    .game-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      margin-bottom: 1rem;
+    }
+
+    .game-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .game-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: linear-gradient(135deg, var(--accent-glow) 0%, #4f46e5 100%);
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .play-btn:hover {
+      opacity: 0.95;
+      transform: scale(1.02);
+    }
+
+    .coming-soon {
+      opacity: 0.5;
+    }
+
+    .coming-soon .game-tag {
+      background: rgba(156, 163, 175, 0.15);
+      color: #9ca3af;
+    }
+
+    footer {
+      margin-top: 5rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>emharper14 design</h1>
+    <p class="subtitle">Interactive browser games powered by Phaser & TypeScript.</p>
+  </header>
+
+  <main>
+    <div class="games-grid">
+      <article class="game-card">
+        <div>
+          <span class="game-tag">Featured</span>
+          <h2 class="game-title">My First Game</h2>
+          <p class="game-desc">A physics arcade game featuring multiple modes (Normal, Endless, Arcade, Hardcore) and dynamic Web Audio synth sound tracks.</p>
+        </div>
+        <a href="./my-first-game/" class="play-btn">
+          Play Now ➔
+        </a>
+      </article>
+
+      <article class="game-card coming-soon">
+        <div>
+          <span class="game-tag">Coming Soon</span>
+          <h2 class="game-title">Next Adventure</h2>
+          <p class="game-desc">Future game project currently in development.</p>
+        </div>
+        <span style="font-size: 0.9rem; color: var(--text-muted); padding: 0.75rem 0;">Stay tuned!</span>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 emharper14 design. Built with Phaser 3 & Vite.</p>
+  </footer>
+</body>
+</html>
